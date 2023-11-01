@@ -1,0 +1,139 @@
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  position: relative;
+}
+
+.card{
+  width: 90%;
+  min-height: 24em;
+  max-height: 25em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: .1em solid black;
+  animation: appear 1ms ease-in-out;
+  animation-timeline: view();
+  animation-range: cover 0% cover 15%;
+  position: relative;
+
+  .title{
+    width: 100%;
+    min-height: 4.8em;
+    background-color: var(--dark-steelblue);
+    padding: .25em;
+    overflow: hidden;
+
+
+    h1{
+      text-align: center;
+      color: var(--white);
+    }
+  }
+
+  img{
+    width: 5em;
+    margin: 1em 0 ;
+    border: .2em solid var(--black);
+  }
+
+  ul{
+    list-style: none;
+
+    li{
+      font-size: 1.4em;
+      display: inline-block;
+      margin: 0 10px;
+      margin-bottom: 1.8em;
+    }
+  }
+
+
+  a{
+    width: 100%;
+    height: 1.3em;
+    background-color: var(--dark-steelblue);
+    text-decoration: none;
+    color: var(--white);
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    font-size: 1.8em;
+  }
+}
+
+.authors{
+  width: 100%;
+  white-space: nowrap;
+
+  p{
+    font-size: 1.2em;
+    margin: 0 1px;
+    text-align: center;
+    overflow: hidden;
+  }
+}
+
+.shortTitle{
+  margin-top: .4em;
+  font-size: 1.8em;
+}
+
+.longTitle{
+  font-size: 1.5em;
+}
+
+.upperCaseTitle{
+  font-size: 1em;
+}
+
+.navigation{
+  margin: 1.2em 0;
+
+  button{
+    width: 3em;
+    height: 3em;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: var(--dark-steelblue);
+    color: var(--white);
+    margin: 1em 1em;
+    border: 0;
+    outline: 0;
+    border-radius: .4em;
+
+    &:hover{
+      transform: translateY(-.35em);
+      box-shadow: 0 8px 12px rgba(#000, 0.55) ;
+    }
+  }
+}
+
+.error-div{
+  width: 80%;
+  position: absolute;
+  padding: 1em;
+  left: 10%;
+
+  p{
+    color: var(--red);
+    text-align: center;
+    font-size: 2em;
+  }
+}
+
+@keyframes appear {
+  from{
+    opacity: 0;
+    translate: -100vw 0
+  }
+
+  to{
+    opacity: 1;
+    translate: 0 0;
+  }
+}

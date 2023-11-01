@@ -1,0 +1,4 @@
+<div class="search-div">
+  <p><i class="fa-solid fa-magnifying-glass"></i></p>
+  <input type="text" placeholder="Search a book title, author, etc" [(ngModel)]="query" (input)="search()" (keyup.backspace)="empty()" >
+</div>

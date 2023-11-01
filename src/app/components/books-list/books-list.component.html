@@ -1,0 +1,27 @@
+<app-search-bar (emitSearch)="getSearch($event)" (isEmpty)="showList = false"></app-search-bar>
+
+<div class="container" *ngIf="showList" >
+  <div class="card" *ngFor="let book of booksList$">
+    <div class="title">
+      <h1 [classList]="book.volumeInfo.title.length < 28 ? 'shortTitle' : book.volumeInfo.title.toUpperCase() === book.volumeInfo.title ? 'upperCaseTitle' :'longTitle'">
+        {{ book.volumeInfo.title.length > 55 ? book.volumeInfo.title.slice(0, 55) + '...' : book.volumeInfo.title}}</h1>
+    </div>
+    <div class="authors">
+      <p *ngFor="let author of book.volumeInfo.authors; index as i">{{ i < 3 ? author : ''}}</p>
+    </div>
+    <img [src]=" book?.volumeInfo?.imageLinks?.thumbnail ?? './assets/no-thumb.png'" alt="Book thumb">
+    <ul>
+      <li *ngFor="let category of book.volumeInfo.categories">{{ category }}</li>
+    </ul>
+    <a [href]="book.volumeInfo.infoLink" target="_blank">More info</a>
+  </div>
+
+  <div class="error-div" *ngIf="notFound">
+    <p>No book with this information found</p>
+  </div>
+
+  <nav class="navigation" *ngIf="booksList$ !== undefined">
+    <button (click)="searchBook(startIndex > 0 ? startIndex - 20: startIndex)"><i class="fa-solid fa-arrow-left"></i></button>
+    <button (click)="searchBook(startIndex = startIndex + 20)"><i class="fa-solid fa-arrow-right"></i></button>
+  </nav>
+</div>
