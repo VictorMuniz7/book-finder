@@ -26,3 +26,43 @@ header{
     letter-spacing: 1px;
   }
 }
+
+@media screen and (min-width: 40em) {
+
+  header{
+
+    h1{
+      font-size: 2.8em;
+    }
+
+    a{
+      font-size: 3em;
+    }
+  }
+}
+
+@media screen and (min-width: 68em) {
+
+  header{
+    justify-content: center;
+
+    a{
+      margin: 0 1.5em;
+    }
+  }
+}
+
+@media screen and (min-width: 90em) {
+
+  header{
+    height: 8em;
+
+    h1{
+      font-size: 4em;
+    }
+
+    a{
+      font-size: 4em;
+    }
+  }
+}

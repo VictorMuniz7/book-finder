@@ -13,15 +13,17 @@
     <ul>
       <li *ngFor="let category of book.volumeInfo.categories">{{ category }}</li>
     </ul>
-    <a [href]="book.volumeInfo.infoLink" target="_blank">More info</a>
+    <a [href]="book.volumeInfo.infoLink" target="_blank">Click to more info</a>
   </div>
+
+
 
   <div class="error-div" *ngIf="notFound">
     <p>No book with this information found</p>
   </div>
 
   <nav class="navigation" *ngIf="booksList$ !== undefined">
-    <button (click)="searchBook(startIndex > 0 ? startIndex - 20: startIndex)"><i class="fa-solid fa-arrow-left"></i></button>
-    <button (click)="searchBook(startIndex = startIndex + 20)"><i class="fa-solid fa-arrow-right"></i></button>
+    <button (click)="searchBook(startIndex > 0 ? startIndex = startIndex - 20: startIndex)" (click)="onPageChange()"><i class="fa-solid fa-arrow-left"></i></button>
+    <button (click)="searchBook(startIndex = startIndex + 20)" (click)="onPageChange()"><i class="fa-solid fa-arrow-right"></i></button>
   </nav>
 </div>

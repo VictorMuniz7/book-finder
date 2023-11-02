@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Book } from 'src/app/interfaces/book';
 import { BooksService } from 'src/app/services/books.service';
 
@@ -8,11 +8,11 @@ import { BooksService } from 'src/app/services/books.service';
   styleUrls: ['./books-list.component.scss']
 })
 export class BooksListComponent implements OnInit{
+  @Output() pageChange = new EventEmitter<void>()
 
   booksList$: Book[] = []
 
   showList: boolean = false
-  isLoading: boolean = false
 
   localQuery: string =''
 
@@ -35,12 +35,10 @@ export class BooksListComponent implements OnInit{
 
   searchBook(startIndex: number){
     if(this.localQuery !== ''){
-    this.isLoading = true
+
       this.booksService.getBooks(this.localQuery, startIndex).subscribe((data) => {
-        this.isLoading = false
-        this.showList = true
-        this.booksList$ = data.items
-        console.log(this.booksList$.length)
+          this.showList = true
+          this.booksList$ = data.items
         if(this.booksList$ === undefined){
           this.notFound = true
         }else{
@@ -52,4 +50,7 @@ export class BooksListComponent implements OnInit{
     }
   }
 
+  onPageChange() {
+    this.pageChange.emit()
+  }
 }
